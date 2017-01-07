@@ -1,0 +1,29 @@
+= form_for @ball, class: 'form-horizontal' do |f|
+  - if @ball.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@ball.errors.count, "error")} prohibited this ball from being saved:"
+      %ul
+        - @ball.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :name, class: 'col-sm-2 control-label'
+    .col-sm-5
+      = f.text_field :name, class: 'form-control'
+  %br
+  %br
+  .form-group
+    = f.label :location, class: 'col-sm-2 control-label'
+    .col-sm-5
+      = f.text_field :location, class: 'form-control'
+  %br
+  %br
+  .form-group
+    = f.label :status, class: 'col-sm-2 control-label'
+    .col-sm-5
+      = f.text_field :status, class: 'form-control'
+  %br
+  %br
+  .form-group
+    .col-sm-1(style="margin-top: 16px;")
+      = f.submit 'Save', class: "btn btn-primary"

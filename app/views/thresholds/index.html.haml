@@ -1,0 +1,34 @@
+%br
+%br
+%br
+%br
+.container
+  %h1 Listing thresholds
+  .threshold_form
+  %table.table.table-bordered.table-bordered.table-striped
+    %thead
+      %tr
+        %th Ball
+        %th Sensor
+        %th Comparing String
+        %th Value
+        %th Action
+        %th Actuator
+
+    %tbody
+      - @thresholds.each do |threshold|
+        %tr
+          %td= threshold.sensor.ball.name
+          %td= threshold.sensor.name
+          %td= threshold.comparing_string
+          %td= threshold.comparing_value
+          %td= threshold.status
+          %td= threshold.action
+          %td
+            = link_to 'Edit', edit_threshold_path(threshold), remote: true
+            |
+            = link_to 'Destroy',threshold, method: :delete, confirm: 'Are you sure?'
+
+%br
+
+= link_to 'New Threshold', new_threshold_path, remote: true

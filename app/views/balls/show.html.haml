@@ -1,0 +1,20 @@
+%br
+%br
+%br
+%br
+.container
+  %p#notice= notice
+
+  %p
+    %b Name:
+    = @ball.name
+  %p
+    %b Location:
+    = @ball.location
+  %p
+    %b Status:
+    = @ball.status
+
+  = link_to 'Edit', edit_ball_path(@ball)
+  \|
+  = link_to 'Back', balls_path

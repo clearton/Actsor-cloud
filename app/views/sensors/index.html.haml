@@ -1,0 +1,41 @@
+%br
+%br
+%br
+%br
+.container
+  %h1 Listing sensors
+
+  %table.table.table-bordered.table-bordered.table-striped
+    %thead
+      %tr
+        %th Name
+        %th Status
+        %th Ball
+        %th Dynamodb table
+        %th Unit
+        %th Payload
+        %th Kalman Payload
+        %th Plot
+        %th Kalman Plot
+        %th
+
+    %tbody
+      - @sensors.each do |sensor|
+        %tr
+          %td= sensor.name
+          %td= sensor.status
+          %td= link_to sensor.ball.name, ball_path(sensor.ball)
+          %td= sensor.dynamodb_table
+          %td= sensor.unit
+          %td= link_to 'Payload', payload_sensor_path(sensor)
+          %td= link_to 'Kalman Payload', payload_sensor_path(sensor, kalman: true)
+          %td= link_to 'Plot', plot_sensor_path(sensor)
+          %td= link_to 'Kalman Plot', plot_sensor_path(sensor, kalman: true)
+          %td
+            = link_to 'Show', sensor
+            |
+            = link_to 'Edit', edit_sensor_path(sensor)
+
+  %br
+
+  = link_to 'New Sensor', new_sensor_path

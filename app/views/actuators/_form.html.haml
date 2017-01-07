@@ -1,0 +1,44 @@
+= form_for @actuator, class: 'form-horizontal' do |f|
+  - if @actuator.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@actuator.errors.count, "error")} prohibited this actuator from being saved:"
+      %ul
+        - @actuator.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :name, class: 'col-sm-2 control-label'
+    .col-sm-5
+      = f.text_field :name, class: 'form-control'
+  %br
+  %br
+  .form-group
+    = f.label :status, class: 'col-sm-2 control-label'
+    .col-sm-5
+      = f.text_field :status, class: 'form-control'
+  %br
+  %br
+  .form-group
+    = f.label :description, class: 'col-sm-2 control-label'
+    .col-sm-5
+      = f.text_area :description, class: 'form-control'
+  %br
+  %br
+  .form-group
+    = f.label :location, class: 'col-sm-2 control-label'
+    .col-sm-5
+      = f.text_field :location, class: 'form-control'
+  %br
+  %br
+  .form-group
+    = f.label :switch, class: 'col-sm-2 control-label'
+    .col-sm-5
+      = f.check_box :switch
+  %br
+  %br
+  .form-group
+    .col-sm-1(style="margin-top: 16px;")
+    = f.submit 'Save', class: "btn btn-primary"
+
+:javascript
+  $("#actuator_switch").bootstrapSwitch();

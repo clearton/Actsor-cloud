@@ -1,0 +1,17 @@
+%br
+%br
+%br
+%br
+.container
+  %h1 #{@sensor.name} payload
+  %table.table.table-bordered.table-bordered.table-striped
+    %thead
+      %tr
+        %th Time
+        %th= @sensor.name
+
+    %tbody
+      - @values.each do |value|
+        %tr
+          %td=h Time.at(value["readTime"].to_i / 1000.0 ).strftime("%m/%d/%y %H:%M")
+          %td=h value[uncapitalize(@sensor.name)]

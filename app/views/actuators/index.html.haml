@@ -1,0 +1,48 @@
+%br
+%br
+%br
+%br
+.container
+  %h1 Listing actuators
+
+  %table.table.table-bordered.table-bordered.table-striped
+
+    %thead
+      %tr
+        %th Name
+        %th Status
+        %th Description
+        %th Location
+        %th switch
+        %th
+
+    %tbody
+      - @actuators.each do |actuator|
+        %tr
+          %td= actuator.name
+          %td= actuator.status
+          %td= actuator.description
+          %td= actuator.location
+          %td= check_box_tag :switch, actuator.id, @resful_con.get_by_actuator_name(actuator.name), class: 'actuator_switch'
+          %td
+            = link_to 'Show', actuator
+            |
+            = link_to 'Edit', edit_actuator_path(actuator)
+            |
+            = link_to 'Destroy', actuator, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+  %br
+
+  = link_to 'New Actuator', new_actuator_path
+
+:javascript
+  $("[name='switch']").bootstrapSwitch();
+
+  $('input[name="switch"]').on('switchChange.bootstrapSwitch', function(event, state) {
+    $.post( "#{change_status_actuators_path}", { id: $(this).val(), state: state } );
+    //console.log($(this).val()); // DOM element
+    //console.log(event); // jQuery event
+    //console.log(state); // true | false
+  });
+
+

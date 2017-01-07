@@ -1,0 +1,29 @@
+%br
+%br
+%br
+%br
+.container
+  %p#notice= notice
+
+  %p
+    %b Name:
+    = @actuator.name
+  %p
+    %b Status:
+    = @actuator.status
+  %p
+    %b Description:
+    = @actuator.description
+  %p
+    %b Location:
+    = @actuator.location
+  %p
+    %b Location:
+    =check_box_tag :switch, "1", @actuator.switch
+
+  = link_to 'Edit', edit_actuator_path(@actuator)
+  \|
+  = link_to 'Back', actuators_path
+
+:javascript
+  $("[name='switch']").bootstrapSwitch();

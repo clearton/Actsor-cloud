@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Sensor:
+  = @threshold.sensor_id
+%p
+  %b Comparing string:
+  = @threshold.comparing_string
+%p
+  %b Comparing value:
+  = @threshold.comparing_value
+%p
+  %b Status:
+  = @threshold.status
+
+= link_to 'Edit', edit_threshold_path(@threshold)
+\|
+= link_to 'Back', thresholds_path

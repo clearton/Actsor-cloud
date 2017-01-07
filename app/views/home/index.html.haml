@@ -1,0 +1,115 @@
+#myCarousel.carousel.slide{ :'data-ride' => 'carousel'}
+  %ol.carousel-indicators
+    %li.active{ :'data-target' => '#myCarousel', :'data-slide-to'=> '0' }
+    %li{ :'data-target' => '#myCarousel', :'data-slide-to'=> '1' }
+    %li{ :'data-target' => '#myCarousel', :'data-slide-to'=> '2' }
+  .carousel-inner{ role: 'listbox' }
+    .item.active
+      = image_tag 'hero.jpg', class: 'first-slide', alt: 'First slide'
+      .container
+        .carousel-caption
+          %h1 Tenbagger for Natural Food Producers
+          %p Actsor
+    .item
+      = image_tag "SensorBall.PNG", class: 'second-slide', alt: 'Second slide'
+      .container
+        .carousel-caption
+          %h1 Farming Automation, the Most Advanced
+    .item
+      = image_tag "demo1.jpg", class: 'third-slide', alt: 'Third slide'
+      .container
+        .carousel-caption
+          %h1 Technology behind the Device
+  %a{ class: 'left carousel-control', href: "#myCarousel", role: 'button', :'data-slide' => "prev" }
+    %span.glyphicon.glyphicon-chevron-left{ :'aria-hidden' => 'true' }
+    %span.sr-only Previous
+
+  %a{ class: 'right carousel-control', href: "#myCarousel", role: 'button', :'data-slide' => "next" }
+    %span.glyphicon.glyphicon-chevron-right{ :'aria-hidden' => 'true' }
+    %span.sr-only Next
+.container.marketing
+  %hr.featurette-divider
+  %p= image_tag('timeline.jpg', style: 'max-width:100%;')
+  %hr.featurette-divider
+  .row.featurette
+    .col-md-12
+      %h2.featurette-heading
+        Actsor Aqua
+      %h2.text-muted Description
+      %p.lead
+        Simply thrown into fish tanks for continuous monitoring of all nutrients. Collected data are transmitted to Big Data cloud wirelessly. No infrastructure modification is necessary. Comes with wireless power outlet adapters for on-off control of water pumps, electric water valves, air conditioners, heaters, water filtration chambers, nutrient injectors, fish feeders, etc. 
+      %p.lead
+        Big Data Cloud Center (https://www.actsor.com/) with elastic Big Data cluster for real-time monitoring, automated decision making, and alerts to human administrators for emergency notification. Communicate with the actsor-aquas to collect data and to control connected devices. In case of the communication disruption, the actsor-aquas make autonomous control decisions and buffer collected data as much as possible until they are reconnected. 
+      %h2.text-muted Sensors:
+      %p.lead
+        %ul.lead
+          %li Dissolved Oxygen
+          %li pH
+          %li Salinity
+          %li Turbidity
+          %li Water and Air Temperature Sensors
+          %li Ammonium
+          %li Nitrate
+          %li Nitrite
+      %h2.text-muted Actuators:
+      %p.lead
+        %ul.lead
+          %li Wireless Power Outlets for automation of other devices
+
+      %h2.text-muted Communication Protocols:
+      %p.lead
+        %ul.lead
+          %li 802.11g
+          %li GPRS
+      %h2.text-muted Cloud Capabilities:
+      %p.lead
+        %ul.lead
+          %li Real-time monitoring of sensors
+          %li History of collected sensors' data
+          %li Alert notifications mechanism
+          %li Configuration of remote devices (such as enabling/disabling certain sensors, changing report rate)
+          %li Monitoring of power consumption and battery levels
+          %li Automatically turning on/off any other devices, such as heaters, water pumps, etc, based on user-defined rules
+
+  %hr.featurette-divider
+  .row.featurette
+    .col-md-12
+      %h2.featurette-heading
+        Actsor Soil
+      %h2.text-muted Description
+      %p.lead
+        Simply thrown into planted in a soil bed or flow bed for continuous monitoring of all nutrients. Collected data are transmitted to Big Data cloud wirelessly. No infrastructure modification is necessary. Comes with wireless power outlet adapters for on-off control of water pumps, electric water valves, air conditioners, heaters, etc. 
+      %p.lead
+        Big Data Cloud Center (https://www.actsor.com/) with elastic Big Data cluster for real-time monitoring, automated decision making, and alerts to human administrators for emergency notification. Communicate with the actsor-soils to collect data and to control connected devices. In case of the communication disruption, the actsor-soils make autonomous control decisions and buffer collected data as much as possible until they are reconnected. 
+      %h2.text-muted Sensors:
+      %p.lead
+        %ul.lead
+          %li Dissolved Oxygen
+          %li Water and Air Temperature Sensors
+          %li Soil Moisture
+          %li  Nitrate
+          %li  Nitrite
+          %li  Potassium 
+      %h2.text-muted Actuators:
+      %p.lead
+        %ul.lead
+          %li Wireless Power Outlets for automation of other devices
+
+      %h2.text-muted Communication Protocols:
+      %p.lead
+        %ul.lead
+          %li 802.11g
+          %li GPRS
+      %h2.text-muted Cloud Capabilities:
+      %p.lead
+        %ul.lead
+          %li Real-time monitoring of sensors
+          %li History of collected sensors' data
+          %li Alert notifications mechanism
+          %li Configuration of remote devices (such as enabling/disabling certain sensors, changing report rate)
+          %li Monitoring of power consumption and battery levels
+          %li Automatically turning on/off any other devices, such as heaters, water pumps, etc, based on user-defined rules
+
+
+:javascript
+  $('#mycarousel').carousel();

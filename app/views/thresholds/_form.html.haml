@@ -1,0 +1,44 @@
+= form_for @threshold do |f|
+  - if @threshold.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@threshold.errors.count, "error")} prohibited this sensor from being saved:"
+      %ul
+        - @threshold.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    = label_tag :ball, nil, class: 'col-sm-2 control-label'
+    .col-sm-5
+      = select_tag :ball, options_from_collection_for_select(Ball.all, :id, :name), include_blank: 'Select Sensor Ball', class: 'form-control'
+  %br
+  %br
+
+  .form-group
+    = f.label :sensor_id, class: 'col-sm-2 control-label'
+    .col-sm-5
+      = f.select :sensor_id, options_from_collection_for_select(Sensor.all, :id, :name), { include_blank: 'Select Sensor'}, class: 'form-control'
+  %br
+  %br
+  .form-group
+    = f.label :comparing_string, class: 'col-sm-2 control-label'
+    .col-sm-5
+      = f.select :comparing_string, options_for_select(['greater_than', 'less_than' ]), {}, class: 'form-control'
+  %br
+  %br
+  .form-group
+    = f.label :comparing_value, class: 'col-sm-2 control-label'
+    .col-sm-5
+      = f.text_field :comparing_value, class: 'form-control'
+  %br
+  %br
+    = f.label :status, 'Action', class: 'col-sm-2 control-label'
+    .col-sm-5
+      = f.select :status, options_for_select(['activation', 'deactivation ']), {}, class: 'form-control'
+  %br
+  %br
+    = f.label :action, 'Actuator', class: 'col-sm-2 control-label'
+    .col-sm-5
+      = f.select :action, options_from_collection_for_select(Actuator.all, :name, :name), { include_blank: 'Select Actuator' }, class: 'form-control'
+  %br
+  %br
+  .form-group
+    = f.submit 'Save', class: "btn btn-primary"

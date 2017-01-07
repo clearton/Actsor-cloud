@@ -1,0 +1,66 @@
+%br
+%br
+%br
+%br
+.container
+  .col-xs-12
+    %h5 Kalman
+    = form_tag plot_sensor_path, method: :get, class: 'form-inline' do
+      = hidden_field_tag :kalman, true
+      - if params[:kalman]
+        .form-group
+          = label_tag :q
+          = number_field_tag :q, @q, step: :any, class: 'form-control'
+        .form-group
+          = label_tag :r
+          = number_field_tag :r, @r, step: :any, class: 'form-control'
+      .form-group
+        = label_tag :from
+        = datetime_field_tag :from, @from,  class: 'form-control'
+      .form-group
+        = label_tag :to
+        = datetime_field_tag :to, @to, class: 'form-control'
+      = submit_tag :update, class: 'btn btn-primary'
+
+      %br
+      %br
+      %br
+      %br
+  #container{ style: "min-width: 310px; height: 400px; margin: 0 auto"}
+  :javascript
+    Highcharts.chart('container', {
+        title: {
+            text: "#{@sensor.name.capitalize} Chart #{@sensor.ball.name}",
+            x: -20 //center
+        },
+        subtitle: {
+            text: '',
+            x: -20
+        },
+        xAxis: {
+          categories: #{raw(@values.map{|g| Time.at(g['readTime'].to_i / 1000).strftime("%m/%d/%y %H:%M") })}
+        },
+        yAxis: {
+            title: {
+              text: "#{@sensor.name} (#{@sensor.unit})"
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+          valueSuffix: "#{@sensor.unit}"
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: "#{@sensor.name}",
+            data: #{raw(@values.map{|g| g[uncapitalize(@sensor.name)].to_i})}
+        }]
+    });

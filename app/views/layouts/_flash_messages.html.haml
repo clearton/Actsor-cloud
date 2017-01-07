@@ -1,0 +1,10 @@
+- flash.each do |name, msg|
+  %br
+  %br
+  %br
+  %br
+  .container
+    - unless msg.blank? # do not show it if the message has been cleared, but the key still exists
+      %div(class="alert alert-#{name}")
+        %a.close(data-dismiss='alert') &#215;
+        = raw msg

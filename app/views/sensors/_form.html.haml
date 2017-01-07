@@ -1,0 +1,39 @@
+= form_for @sensor do |f|
+  - if @sensor.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@sensor.errors.count, "error")} prohibited this sensor from being saved:"
+      %ul
+        - @sensor.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :name, class: 'col-sm-2 control-label'
+    .col-sm-5
+      = f.text_field :name, class: 'form-control'
+  %br
+  %br
+  .form-group
+    = f.label :status, class: 'col-sm-2 control-label'
+    .col-sm-5
+      = f.text_field :status, class: 'form-control'
+  %br
+  %br
+  .form-group
+    = f.label :unit, class: 'col-sm-2 control-label'
+    .col-sm-5
+      = f.text_field :unit, class: 'form-control'
+  %br
+  %br
+    = f.label :ball_id, 'Ball', class: 'col-sm-2 control-label'
+    .col-sm-5
+      = f.select :ball_id, options_from_collection_for_select(Ball.all, :id, :name), {}, class: 'form-control'
+  %br
+  %br
+  .form-group
+    = f.label :dynamodb_table, class: 'col-sm-2 control-label'
+    .col-sm-5
+      = f.text_field :dynamodb_table, class: 'form-control'
+  %br
+  %br
+  .form-group
+    = f.submit 'Save', class: "btn btn-primary"
